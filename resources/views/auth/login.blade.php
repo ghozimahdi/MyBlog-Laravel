@@ -23,11 +23,19 @@
                     @enderror
 
                     <div class="mt-4">
-                        <input type="checkbox" name="remember" id="remember">
+                        <input
+                            type="checkbox"
+                            name="remember"
+                            value="{{old('remember')}}"
+                        />
                         <label for="remember" class="text-white">Remember me</label>
                     </div>
                 </div>
-                <button class="mt-4" type="submit">Login</button>
+                <button
+                    class="mt-4 "
+                    type="submit"
+                >Login
+                </button>
             </form>
         </div>
     </div>

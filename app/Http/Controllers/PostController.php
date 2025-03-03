@@ -12,7 +12,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all()->where('active', true);
+        $posts = Post::active()->get();
 
         $view_data = [
             'posts' => $posts,
@@ -50,7 +50,14 @@ class PostController extends Controller
     public function show(string $id)
     {
         $post = Post::find($id);
-        return view('posts.show', ['post' => $post]);
+        $comments = $post->comments()->get();
+        $totalComment = $post->total_comment;
+
+        return view('posts.show', [
+            'post' => $post,
+            'comments' => $comments,
+            'total_comment' => $totalComment,
+        ]);
     }
 
     /**
